@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #090d16;
+    color: #f1f5f9;
+  }
+}
+
+/* Custom 3D Lotto Ball Glass & Specular Effects */
+.lotto-ball-3d {
+  position: relative;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  box-shadow: inset -4px -4px 8px rgba(0, 0, 0, 0.4), inset 3px 3px 6px rgba(255, 255, 255, 0.45), 0 6px 14px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.lotto-ball-3d::after {
+  content: '';
+  position: absolute;
+  top: 8%;
+  left: 15%;
+  width: 40%;
+  height: 25%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+  pointer-events: none;
+}
+
+.lotto-ball-3d:hover {
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* Lotto Ticket Styling */
+.lotto-ticket {
+  background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.lotto-ticket::before, .lotto-ticket::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  background-color: #090d16;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.lotto-ticket::before {
+  left: -9px;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.lotto-ticket::after {
+  right: -9px;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
