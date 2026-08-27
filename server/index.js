@@ -286,6 +286,10 @@ app.post('/api/lotto/sync', async (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`🎰 Lotto Analyzer Backend running on http://localhost:${PORT}`);
-});
+if (process.env.VERCEL !== '1') {
+  app.listen(PORT, () => {
+    console.log(`🎰 Lotto Analyzer Backend running on http://localhost:${PORT}`);
+  });
+}
+
+export default app;
