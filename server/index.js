@@ -43,11 +43,16 @@ function loadHistory() {
 }
 
 function saveHistory(history) {
+  // Vercel serverless functions use a read-only filesystem.
+  // Keep the bundled history file as read-only on Vercel.
+  if (process.env.VERCEL === '1') {
+    return;
+  }
+
   // Sort descending by drwNo
   history.sort((a, b) => b.drwNo - a.drwNo);
   fs.writeFileSync(DATA_FILE, JSON.stringify(history, null, 2), 'utf-8');
 }
-
 // Fetch single round from NEW official DHLottery API
 async function fetchDHLotteryRound(drwNo) {
   try {
